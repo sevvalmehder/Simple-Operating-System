@@ -1,6 +1,6 @@
 # Virtual Operating System
 
-This OS runs Intel8080 CPU emulator and execute specific system calls.
+This repository is a homeworks of lecture Operating Systems. This Virtual OS runs Intel8080 CPU emulator and execute specific system calls.
 
 ### Requirements
 * Intel8080 
