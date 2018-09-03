@@ -1,0 +1,31 @@
+Some notes about HW01
+
+Just .asm files sended.
+
+For compiling, in terminal type "make". Executable program name is: sim8080
+Typing "make clean" is delete executable program and all object files and clear the terminal screen.
+
+Handled System Calls:
+
+	- PRINT_B - [Reg A = 1](10 cycle) : Prints the contents of register B on
+	the screen as a decimal number.
+	- PRINT_MEM - [Reg A = 2](10 cycle) : Prints the contents of the memory
+	pointed by registers B and C as decimal number.
+	- READ_B - [Reg A = 3](10 cycle) : Reads an integer from the keyboard
+	and puts it in register B.
+	- READ_MEM - [Reg A = 4](10 cycle) : Reads an integer from the keyboard
+	and puts it in the memory location pointed by registers B and C.
+	- PRINT_STR - [Reg A = 5](100 cycle) : Prints the null terminated string at
+	the memory location pointed by B and C.
+	- READ_STR - [Reg A = 6](100 cycle) : Reads the null terminated string
+	from the keyboard and puts the result at the memory location pointed by B and C.
+	- GET_RND - [Reg A = 7](5 cycle) : Produces a random byte and puts in
+	register B.
+
+Debug modes:
+	
+	- 0 : The program will be run and the contents of the memory will be saved to exe.mem as a text file of hexedecimal numbers
+	- 1 : After each instruction execution, the status of the CPU will be printed. At the end of the simulation, memory will be saved as in Debug mode 0
+	- 2 : After each instruction execution, the CPU state will be displayed. Simulation will wait for an from the keyboard and it will continue for the next tick, memory will be saved as in Debug mode 0
+
+	All three modes will display the total number of cycles used by the program at the end of the executions.
