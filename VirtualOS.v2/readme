@@ -1,0 +1,30 @@
+Some notes about HW02
+
+This files are changed and new files. Program must compile with the given files
+in version 1.
+
+All asm files task explained the beginning of .asm files.
+
+Thread switching is controlled with Round-robin(RR) scheduler
+(quantum time = 100 cycles)
+
+Added System Calls:
+
+	- TCreate - [Reg A = 11](80 cycle) : It works like the pthread_create call 
+	of UNIX systems. It returns the thread ID in register B on success. On fail,
+	returns 0. After this call, a new thread is created and it starts running 
+	the function passed as parameter.
+	- TExit - [Reg A = 8](50 cycle) :It works like the pthread_exit call of 
+	UNIX systems. It terminates the calling thread.
+	- TJoin - [Reg A = 9](40 cycle) : Blocks the calling thread until the thread
+	with thread ID is terminated.
+	- TYield - [Reg A = 10](40 cycle) : Causes the calling thread to yield the 
+	CPU. The thread is placed at the end of the schedule queue.
+	
+Added debug mode features:
+
+	- In Debug mode 2 : Every time a thread switch happens,thread ID of both 
+	threads and total cycles spent for the blocked thread are printed to the 
+	screen.
+	- Debug mode 3 :  Information about each thread is printed on the screen 
+	when a thread switch occurs.
