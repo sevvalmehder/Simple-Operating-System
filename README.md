@@ -1,6 +1,10 @@
 # Virtual Operating System
 
-This repository is a homeworks of lecture Operating Systems. This Virtual OS runs Intel8080 CPU emulator and execute specific system calls.
+This repository is a homeworks of Operating Systems Class. This Virtual OS runs Intel8080 CPU emulator and execute specific system calls.
+
+## Some Notes
+* All version of procest include added&changed files. Program must be compiled with the given files(.cpp files) in the first version.
+* Handled system calls and debug mode explanations are in the readme file of relevant version.
 
 ### Requirements
 * Intel8080 
