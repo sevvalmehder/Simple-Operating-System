@@ -14,4 +14,5 @@ https://en.wikipedia.org/wiki/Intel_8080
 http://asdasd.rpg.fi/~svo/i8080/
 
 ### Usage 
-./sim8080 file.com debugmode
+For v1 and v2: ./sim8080 file.com debugmode
+For v3       : ./sim8080 file.com filesystem.dat debugmode
