@@ -1,0 +1,28 @@
+Some notes about HW3
+
+USAGE:
+	./sim8080 file.com filesystem.dat debugmode
+
+Read the program from file.com and the filesystem.dat as the file systems. Block size of system is 256 bytes and the total disk space is 1 MB. .dat files are binary files that keep all the file systems. 
+In SavedFileSystems folder:
+	system1 -> empty file system
+	system2 -> after execution p1.asm with filename "example.txt"
+	system3 -> after execution p2.asm, nothing change
+	system4 -> after execution p4.asm, just increase the file size "example.txt"
+	system5 -> after execution p1.asm, adding a file with "example2.c"
+	
+File attributes include: file name, file creation, modification and last access time and file size in bytes. 
+- open, read, write, fseek operations change the last access time and write operation changes the last modified time.
+- When system call happens, if the file is never accessed, file table information writes nothing. While execution p1, after fileCreate call there is no data about last access time but when file open system call happen you can see the file last access time.
+
+Added System Calls:
+
+	- FileCreate - [Reg A = 12]: It works like the file create call of UNIX systems. On fail, returns 0 in register B. On success, it returns 1. There are no owners, no access permissions.
+	- FileClose - [Reg A = 13] :It works like the close call of UNIX systems. It closes the file. On fail, returns 0 in register B. On success, it returns 1.
+	- FileOpen - [Reg A = 14] : It works like the file open call of UNIX systems. It returns the file handle ID in register B on success. On fail, returns 0. The file is always opened for read/write mode. There are no owners, the file pointer points to the beginning of the file.
+	- FileRead - [Reg A = 15] : It works like the read call of UNIX systems. It reads the file. On fail, returns 0 in register B. On success, it returns the number of bytes read. It ad-vances the file pointer by the number of bytes read.
+	- FileWrite - [Reg A = 16]: t writes to the file. On fail, returns 0 in register B.
+	On success, it returns the number of bytes written. It advances the file pointer by the number of bytes written. It append the file if needed.
+	- FileSeek - [Reg A = 17] :It moves the file pointer to the desired seek position.
+	On fail, returns 0 in register B. On success, it returns 1.
+	- DirRead - [Reg A = 18] : We have a single directory in our system: Root. The information about the files will be read and will be put to the memory as a null terminated string.
